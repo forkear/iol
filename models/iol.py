@@ -11,6 +11,11 @@ class Iol(object):
         self.cuentas =  MiCuentaService.estadocuentas(self.auth)
         return self.cuentas
 
+    def portafolio(self, pais):
+        self.portafolio = MiCuentaService.portafolio(self.auth, pais)
+        return self.portafolio
+
+
     @property
     def token(self):
         return self.auth.token

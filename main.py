@@ -16,6 +16,8 @@ def print_menu():
         \n OPCIONES\n \
         \n\t t - ver token\
         \n\t e - estado de la cuenta\
+        \n\t pa - portafolio argentina\
+        \n\t pe - portafolio estados_Unidos\
         \n\t q - salir\n\
         \n---------------------------------------------------------\
         \n\
@@ -38,13 +40,21 @@ def estado_cuentas(iol):
         print("---------------------------------------------------------+")
         
     
+def ver_portafolio_arg(iol):
+    portafolio = iol.portafolio(pais='argentina' )
+    print(portafolio)
+
+
+def ver_portafolio_eeuu(iol):
+    portafolio = iol.portafolio(pais='estados_Unidos' )
+    print(portafolio)
 
 def ver_token(iol):
     print(f"{iol.token}")
 
 
-def main():
 
+def main():
     
     try:
         iol = Iol(config.username, config.password)
@@ -55,6 +65,8 @@ def main():
     acciones = {
         't': lambda iol: ver_token(iol),
         'e': lambda iol: estado_cuentas(iol),
+        'pa': lambda iol: ver_portafolio_arg(iol),
+        'pe': lambda iol: ver_portafolio_eeuu(iol)
     }
 
     opcion = None
